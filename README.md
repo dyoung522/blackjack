@@ -1,6 +1,6 @@
 # Blackjack
 
-Scooby Doobie Doo! Here's a blackjack gem just for you!
+Scooby Doobie Doo! Here's a blackjack game just for you!
 
 ## Installation
 
@@ -12,16 +12,20 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install blackjack
 
-## Usage
+## Status
 
-TODO: Write usage instructions here
+At this point, the following features exist:
 
-## Development
+1. `Blackjack::Game.new.play` starts a new game
+1. Dealer only shows the player-visible cards (i.e. not the first card)
+1. Game is over if the Dealer wins by BlackJack
+1. All players display their hands and their current card value
+1. Any winning or losing hands are displayed as such
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After each round, any remaining players would be dealt a new card and the round would continue as above until all players (or the dealer) is out.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### ToDo
 
-## Contributing
+- Only the core game has currently been implemented, and no CLI command has been created. However, I plan on using `Thor` to add a CLI tool in the future.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dyoung522/blackjack.
+- Only one round plays currently. It should be each to add the game-loop in as (I believe) all the relative parts are there for it, just not the loop itself.
