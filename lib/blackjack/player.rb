@@ -19,7 +19,7 @@ module Blackjack
         total += if card.face == "A"
                    (total + 11) <= 21 ? 11 : 1
                  else
-                   %w[J Q K].include?(card.face) ? 10 : card.face.to_i
+                   card.to_i
                  end
       end
 

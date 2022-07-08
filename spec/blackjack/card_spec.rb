@@ -28,4 +28,10 @@ RSpec.describe Blackjack::Card do
       expect(card.to_s).to eq("#{face} of #{suit}")
     end
   end
+
+  describe "#to_i" do
+    it "shows the value of the card" do
+      expect(card.to_i).to eq(11)
+    end
+  end
 end

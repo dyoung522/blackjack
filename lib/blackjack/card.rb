@@ -13,5 +13,12 @@ module Blackjack
     def to_s
       "#{face} of #{suit}"
     end
+
+    def to_i
+      return 11 if face == "A"
+      return 10 if %w[J Q K].include?(face)
+
+      face.to_i
+    end
   end
 end
