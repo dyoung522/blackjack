@@ -23,7 +23,7 @@ RSpec.describe Blackjack::Card do
     end
   end
 
-  describe "#show" do |arg|
+  describe "#show" do
     it "shows the card" do
       expect(card.show).to eq("#{value} of #{suit}")
     end

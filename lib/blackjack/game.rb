@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Blackjack
   # The game of Blackjack
   class Game
