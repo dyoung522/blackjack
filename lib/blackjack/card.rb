@@ -3,15 +3,15 @@
 module Blackjack
   # A Standard Playing Card
   class Card
-    attr_reader :suit, :value
+    attr_reader :suit, :face
 
-    def initialize(suit, value)
+    def initialize(suit, face)
       @suit = suit
-      @value = value
+      @face = face
     end
 
-    def show
-      "#{value} of #{suit}"
+    def to_s
+      "#{face} of #{suit}"
     end
   end
 end

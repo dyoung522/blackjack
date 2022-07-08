@@ -44,17 +44,17 @@ module Blackjack
     end
 
     def show_cards
+      dealer.cards[1..].each do |card|
+        puts "Dealer shows #{card}"
+      end
+
       if blackjack?(dealer)
         puts "Dealer wins with BlackJack!"
         return
       end
 
-      dealer.cards[1..].each do |card|
-        puts "Dealer shows #{card.show}"
-      end
-
       players_playing.each do |player|
-        puts "#{player.name} has #{player.cards.map(&:show).join(", ")} for a total of #{player.total}"
+        puts "#{player.name} has #{player.cards.map(&:to_s).join(", ")} for a total of #{player.total}"
         win_or_lose?(player)
       end
     end

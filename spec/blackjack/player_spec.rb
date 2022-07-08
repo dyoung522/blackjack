@@ -31,10 +31,40 @@ RSpec.describe Blackjack::Player do
   end
 
   describe "#total" do
-    it "returns the total value of the cards" do
-      player.cards << Blackjack::Card.new("♦", "A")
-      player.cards << Blackjack::Card.new("♦", "A")
-      expect(player.total).to eq(12)
+    context "with no cards" do
+      it "returns 0" do
+        expect(player.total).to eq(0)
+      end
+    end
+
+    context "with number cards" do
+      it "returns the value of the cards" do
+        [Blackjack::Card.new("♦", "2"), Blackjack::Card.new("♦", "3")].each { |card| player.cards << card }
+        expect(player.total).to eq(5)
+      end
+    end
+
+    context "with two Aces" do
+      it "returns 12" do
+        player.cards << Blackjack::Card.new("♦", "A")
+        player.cards << Blackjack::Card.new("♣", "A")
+        expect(player.total).to eq(12)
+      end
+    end
+
+    context "with two face cards" do
+      it "returns 20" do
+        player.cards << Blackjack::Card.new("♦", "J")
+        player.cards << Blackjack::Card.new("♦", "Q")
+        expect(player.total).to eq(20)
+      end
+    end
+
+    context "with Blackjack" do
+      it "returns 21" do
+        [Blackjack::Card.new("♦", "K"), Blackjack::Card.new("♦", "A")].each { |card| player.cards << card }
+        expect(player.total).to eq(21)
+      end
     end
   end
 

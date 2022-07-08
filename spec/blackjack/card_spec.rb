@@ -2,8 +2,8 @@
 
 RSpec.describe Blackjack::Card do
   let(:suit) { "♦" }
-  let(:value) { "A" }
-  let(:card) { Blackjack::Card.new suit, value }
+  let(:face) { "A" }
+  let(:card) { Blackjack::Card.new suit, face }
 
   describe "#new" do
     it "creates a new instance" do
@@ -17,15 +17,15 @@ RSpec.describe Blackjack::Card do
     end
   end
 
-  describe "#value" do
-    it "has a value" do
-      expect(card.value).to eq(value)
+  describe "#face" do
+    it "has a face" do
+      expect(card.face).to eq(face)
     end
   end
 
-  describe "#show" do
+  describe "#to_s" do
     it "shows the card" do
-      expect(card.show).to eq("#{value} of #{suit}")
+      expect(card.to_s).to eq("#{face} of #{suit}")
     end
   end
 end

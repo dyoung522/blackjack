@@ -13,15 +13,13 @@ module Blackjack
     end
 
     def total
-      return 0 if cards.empty?
-
       total = 0
 
       @cards.each do |card|
-        total += if card.value == "A"
-                   (total + 11) < 21 ? 11 : 1
+        total += if card.face == "A"
+                   (total + 11) <= 21 ? 11 : 1
                  else
-                   %w[J Q K].include?(card.value) ? 10 : card.value.to_i
+                   %w[J Q K].include?(card.face) ? 10 : card.face.to_i
                  end
       end
 
