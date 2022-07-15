@@ -48,9 +48,14 @@ module Blackjack
         puts "Dealer shows #{card}"
       end
 
-      if blackjack?(dealer)
+      if dealer.blackjack?
         puts "Dealer wins with BlackJack!"
-        return
+        end_game
+      end
+
+      if dealer.bust?
+        puts "Dealer busts!"
+        end_game
       end
 
       players_playing.each do |player|
@@ -63,22 +68,14 @@ module Blackjack
       players.filter(&:playing?)
     end
 
-    def blackjack?(player)
-      player.total == 21 && player.cards.count == 2
-    end
-
-    def busted?(player)
-      player.total > 21
-    end
-
     def win_or_lose?(player)
-      if blackjack?(player)
+      if player.blackjack?
         puts "#{player.name} wins with BlackJack!"
         player.wins
         return
       end
 
-      return unless busted?(player)
+      return unless player.bust?
 
       puts "#{player.name} has busted!"
       player.loses

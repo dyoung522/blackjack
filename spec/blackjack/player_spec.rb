@@ -60,6 +60,14 @@ RSpec.describe Blackjack::Player do
       end
     end
 
+    context "with two aces and a face card" do
+      it "returns 12" do
+        [Blackjack::Card.new("♦", "A"), Blackjack::Card.new("♦", "K"), Blackjack::Card.new("♦", "A")].each { |card| player.cards << card }
+        expect(player.total).to eq(12)
+      end
+    end
+
+
     context "with Blackjack" do
       it "returns 21" do
         [Blackjack::Card.new("♦", "K"), Blackjack::Card.new("♦", "A")].each { |card| player.cards << card }
@@ -104,4 +112,29 @@ RSpec.describe Blackjack::Player do
       end
     end
   end
+
+  describe "#blackjack?" do
+    context "when total is 21" do
+      before do
+        [Blackjack::Card.new("♦", "A"), Blackjack::Card.new("♦", "8"), Blackjack::Card.new("♦", "2")].each { |card| player.cards << card }
+      end
+
+      it "returns true" do
+        expect(player.blackjack?).to be_truthy
+      end
+    end
+  end
+
+  describe "#bust?" do
+    context "when total is greater than 21" do
+      before do
+        [Blackjack::Card.new("♦", "K"), Blackjack::Card.new("♦", "K"), Blackjack::Card.new("♦", "2")].each { |card| player.cards << card }
+      end
+
+      it "returns true" do
+        expect(player.bust?).to be_truthy
+      end
+    end
+  end
+
 end

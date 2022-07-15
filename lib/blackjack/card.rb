@@ -15,7 +15,7 @@ module Blackjack
     end
 
     def to_i
-      return 11 if face == "A"
+      return 1 if face == "A"
       return 10 if %w[J Q K].include?(face)
 
       face.to_i

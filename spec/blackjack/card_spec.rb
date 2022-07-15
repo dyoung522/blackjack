@@ -30,8 +30,18 @@ RSpec.describe Blackjack::Card do
   end
 
   describe "#to_i" do
-    it "shows the value of the card" do
-      expect(card.to_i).to eq(11)
+    context "with an ace" do
+      it "shows the value of the card" do
+        expect(card.to_i).to eq(1)
+      end
+    end
+
+    context "with a face card" do
+      let(:card) { Blackjack::Card.new suit, "J" }
+
+      it "shows the value of the card" do
+        expect(card.to_i).to eq(10)
+      end
     end
   end
 end
