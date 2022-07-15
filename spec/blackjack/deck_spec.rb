@@ -18,6 +18,7 @@ RSpec.describe Blackjack::Deck do
     context "it has 13 cards of each suit" do
       it "has 13 cards of each suit" do
         expect(deck.cards.group_by(&:suit).length).to eq(4)
+        expect(deck.cards.group_by(&:value).length).to eq(13)
       end
     end
 

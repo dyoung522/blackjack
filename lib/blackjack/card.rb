@@ -10,8 +10,23 @@ module Blackjack
       @value = value
     end
 
-    def show
+    def ace?
+      value == "A"
+    end
+
+    def facecard?
+      %w[J Q K].include?(value)
+    end
+
+    def to_s
       "#{value} of #{suit}"
+    end
+
+    def to_i
+      return 1 if ace?
+      return 10 if facecard?
+
+      value.to_i
     end
   end
 end
