@@ -8,7 +8,7 @@ module Blackjack
     def initialize
       @cards = []
       @suits = ["♠", "♣", "♥", "♦"]
-      @faces = %w[A 2 3 4 5 6 7 8 9 10 J Q K]
+      @values = %w[A 2 3 4 5 6 7 8 9 10 J Q K]
 
       create_deck
     end
@@ -22,8 +22,8 @@ module Blackjack
 
     def create_deck
       @suits.each do |suit|
-        @faces.each do |face|
-          @cards << Card.new(suit, face)
+        @values.each do |value|
+          @cards << Card.new(suit, value)
         end
       end
     end

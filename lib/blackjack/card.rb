@@ -3,22 +3,30 @@
 module Blackjack
   # A Standard Playing Card
   class Card
-    attr_reader :suit, :face
+    attr_reader :suit, :value
 
-    def initialize(suit, face)
+    def initialize(suit, value)
       @suit = suit
-      @face = face
+      @value = value
+    end
+
+    def ace?
+      value == "A"
+    end
+
+    def facecard?
+      %w[J Q K].include?(value)
     end
 
     def to_s
-      "#{face} of #{suit}"
+      "#{value} of #{suit}"
     end
 
     def to_i
-      return 1 if face == "A"
-      return 10 if %w[J Q K].include?(face)
+      return 1 if ace?
+      return 10 if facecard?
 
-      face.to_i
+      value.to_i
     end
   end
 end

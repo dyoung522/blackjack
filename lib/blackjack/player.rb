@@ -15,7 +15,7 @@ module Blackjack
     def total
       total = @cards.sum(&:to_i)
 
-      @cards.select { |card| card.face == "A" }.each { total += 10 if total + 10 <= 21 }
+      @cards.select(&:ace?).each { total += 10 if total + 10 <= 21 }
 
       total
     end
